@@ -21,6 +21,8 @@ class CreateProperty extends Migration
             $table->string('neighborhood');
             $table->string('number');
             $table->string('complement');
+            $table->decimal('price', 10, 2);
+            $table->number('rooms');
 
             $table
                 ->foreignId('property_type_id') // column
@@ -31,6 +33,11 @@ class CreateProperty extends Migration
                 ->foreignId('property_deal_id') // column
                 ->constrained('property_deal') // table
                 ->onDelete('cascade');
+
+            $table
+            ->foreignId('owner_id') // column
+            ->constrained('owner') // table
+            ->onDelete('cascade');
 
             $table->timestamps();
         });

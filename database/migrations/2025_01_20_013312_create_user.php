@@ -15,9 +15,10 @@ class CreateUser extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password_hash');
             $table->string('name');
+            $table->string('email')->unique();
 
             $table
                 ->foreignId('user_type_id') // column
