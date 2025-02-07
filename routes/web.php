@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('broker.index'); });
+
+Route::post('/filter', [App\Http\Controllers\FilterController::class, 'index']);
+Route::get('/area-corretor', [App\Http\Controllers\BrokerController::class, 'index'])->middleware('auth');
+
+
+Route::get('/login-corretor', [App\Http\Controllers\AuthController::class, 'login'])->name('login'); //retorna a view de login
+Route::post('/verify-login', [App\Http\Controllers\AuthController::class, 'verifyLogin']);            //verifica o login do corretor
