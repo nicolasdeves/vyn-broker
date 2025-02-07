@@ -1,0 +1,20 @@
+
+:root {
+    --primary-color: #cce7f1;
+
+    --secondary-color: #3b96f7;
+
+    --text-color: #406481;
+  }
+
+  .primary-color {
+    background-color: var(--primary-color) !important;
+  }
+
+  .secondary-color {
+    color: var(--secondary-color) !important;
+  }
+
+  .text-color {
+    color: var(--text-color) !important;
+  }
