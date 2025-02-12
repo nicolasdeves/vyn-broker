@@ -10,13 +10,14 @@ class Property extends Model
 
     protected $fillable = [
         'name',
-        'city',
         'street',
         'neighborhood',
         'number',
         'complement',
         'price',
         'rooms',
+        'city_id',
+
         'property_type_id',
         'property_deal_id',
         'owner_id',
@@ -34,6 +35,11 @@ class Property extends Model
 
     public function owner()
     {
-        return $this->hasMany(Owner::class);
+        return $this->hasOne(Owner::class);
+    }
+
+    public function imagePaths()
+    {
+        return $this->hasMany(ImagePath::class);
     }
 }
