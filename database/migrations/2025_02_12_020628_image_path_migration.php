@@ -21,6 +21,8 @@ class ImagePathMigration extends Migration
                 ->foreignId('property_id')
                 ->constrained('property')
                 ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
