@@ -16,15 +16,15 @@ class PropertyTypeSeeder extends Seeder
     {
         DB::table('property_type')->insert([
             [
-                'type' => 'apartament',
+                'type' => 'Apartamento',
                 'created_at' => now()
             ],
             [
-                'type' => 'home',
+                'type' => 'Casa',
                 'created_at' => now()
             ],
             [
-                'type' => 'terrain',
+                'type' => 'Terreno',
                 'created_at' => now()
             ],
         ]);

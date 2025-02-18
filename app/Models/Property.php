@@ -42,4 +42,15 @@ class Property extends Model
     {
         return $this->hasMany(ImagePath::class);
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function getMessageAttribute()
+    {
+        return $this->property_deal_id == 1 ? "Aluguel" : "Venda";
+    }
+
 }
