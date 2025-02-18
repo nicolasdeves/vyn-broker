@@ -5,21 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\PropertyType;
 use App\Models\City;
 use App\Models\Neighborhood;
+use App\Models\Property;
 use App\Models\PropertyDeal;
 use App\UseCases\CreatePropertyUseCase;
+use App\UseCases\DeletePropertyUseCase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class BrokerController extends Controller
 {
-    public function index()
-    {
+    public function homeScreen() {
+        $properties = Property::all();
         $propertyTypes = PropertyType::orderBy('type')->get();
         $propertyDeals = PropertyDeal::orderBy('deal')->get();
         $cities = City::orderBy('name')->get();
         $neighborhoods = Neighborhood::orderBy('name')->get();
+        $brokerArea = false;
 
-        return view('broker.broker-area', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods'));
+        return view('broker.index', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods', 'properties', 'brokerArea'));
+    }
+
+    public function brokerArea()
+    {
+        $properties = Property::all();
+        $propertyTypes = PropertyType::orderBy('type')->get();
+        $propertyDeals = PropertyDeal::orderBy('deal')->get();
+        $cities = City::orderBy('name')->get();
+        $neighborhoods = Neighborhood::orderBy('name')->get();
+        $brokerArea = true;
+
+        return view('broker.broker-area', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods', 'properties', 'brokerArea'));
     }
 
     public function addProperty(Request $request)
@@ -56,5 +70,12 @@ class BrokerController extends Controller
         $neighborhoods = Neighborhood::orderBy('name')->get();
 
         return view('broker.broker-area', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods'));
+    }
+
+    public function deleteProperty(Request $request)
+    {
+        $deleteProperty = new DeletePropertyUseCase();
+        $deleteProperty->execute($request->id);
+
     }
 }
