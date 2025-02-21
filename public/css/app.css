@@ -18,3 +18,13 @@
   .text-color {
     color: var(--text-color) !important;
   }
+
+
+  h1 {
+    font-size: 3rem;
+    color: var(--text-color)
+  }
+
+  button {
+    background-color: var(--text-color);
+  }
