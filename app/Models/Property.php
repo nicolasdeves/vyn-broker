@@ -48,6 +48,11 @@ class Property extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function neighborhood()
+    {
+        return $this->belongsTo(Neighborhood::class);
+    }
+
     public function getMessageAttribute()
     {
         return $this->property_deal_id == 1 ? "Aluguel" : "Venda";
