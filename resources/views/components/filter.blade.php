@@ -96,7 +96,7 @@
     }
 
     .rent-buy-buttons {
-        font-size: 30px;
+        font-size: 2rem !important;
         font-weight: bold;
         color: var(--text-color);
         padding: 0.3em;
@@ -107,7 +107,7 @@
     }
 
     .search-button {
-        font-size: 20px;
+        font-size: 2rem !important;
         font-weight: bold;
         color: var(--text-color);
         padding: 0.3em;
@@ -116,6 +116,7 @@
 
         width: 7em
     }
+
 
     .btn:hover {
         background: var(--primary-color);

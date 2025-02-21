@@ -10,6 +10,9 @@
 
     @include('components.add-property-modal')
 
+    @include('components.card')
+
+
     <style>
         .search-button {
             font-size: 1.5rem;
@@ -25,5 +28,6 @@
             opacity: 0.8;
         }
     </style>
+
 
 @endsection
