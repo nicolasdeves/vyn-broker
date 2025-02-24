@@ -22,6 +22,9 @@ class CreateProperty extends Migration
             $table->string('complement');
             $table->decimal('price', 10, 2);
             $table->integer('rooms');
+            $table->integer('bathrooms');
+            $table->integer('size');
+            $table->integer('garage');
 
             $table
                 ->foreignId('city_id') // column
