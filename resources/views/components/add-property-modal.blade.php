@@ -66,7 +66,7 @@
 
                         <div class="col-2">
                             <label for="rooms" class="form-label">Dormitórios</label>
-                            <input type="number" class="form-control" id="rooms" name="rooms" min="1"
+                            <input type="number" class="form-control" id="rooms" name="rooms" min="0"
                                 required>
                         </div>
 
@@ -90,6 +90,27 @@
 
                     <div class="d-flex flex-row">
 
+                        <div class="col-4">
+                            <label for="size" class="form-label">Tamanho (m²)</label>
+                            <input type="number" class="form-control" id="size" name="size" required>
+                        </div>
+
+                        <div class="col-2">
+                            <label for="bathrooms" class="form-label">Banheiros</label>
+                            <input type="number" class="form-control" id="bathrooms" name="bathrooms" min="0"
+                                required>
+                        </div>
+
+                        <div class="col-2">
+                            <label for="garage" class="form-label">Garagem</label>
+                            <input type="number" class="form-control" id="garage" name="garage" min="0"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex flex-row">
+
                         <div class="col-8">
                             <label for="complement" class="form-label">Complemento/Observação</label>
                             <input type="text" class="form-control" id="complement" name="complement" required>
@@ -97,7 +118,8 @@
 
                         <div class="col-4">
                             <label for="price" class="form-label">Valor</label>
-                            <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+                            <input type="number" step="0.01" class="form-control" id="price" name="price"
+                                required>
                         </div>
                     </div>
                     <div class="mt-2">

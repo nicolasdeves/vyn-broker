@@ -5,7 +5,7 @@
 @include('components.filter')
 
 <h1 class="d-flex justify-content-center mt-3">
-    Destaques
+    Imóveis
 </h1>
 
 @include('components.card')

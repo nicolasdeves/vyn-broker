@@ -29,7 +29,7 @@
                     <div class="features">
                         <div class="feature">
                             <i class="fas fa-ruler icon"></i>
-                            120 m²
+                            {{ $property->size }} m²
                         </div>
                         <div class="feature">
                             <i class="fas fa-bed icon"></i>
@@ -42,7 +42,12 @@
                         </div>
                         <div class="feature">
                             <i class="fas fa-bath icon"></i>
-                            2 Banhos
+                            {{ $property->bathrooms }}
+                            @if ($property->bathrooms > 1)
+                            Banheiros
+                            @else
+                            Banheiro
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -50,7 +55,12 @@
                 <div class="card-footer">
                     <div class="feature">
                         <i class="fas fa-car icon"></i>
-                        2 Vagas
+                        {{ $property->garage }}
+                        @if ($property->garage > 1)
+                        Vagas
+                        @else
+                        Vaga
+                        @endif
                     </div>
                     <button class=" btn-information btn-details ">Ver Detalhes</button>
                 </div>

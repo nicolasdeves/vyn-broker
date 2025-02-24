@@ -7,20 +7,20 @@
                 <div class="d-flex justify-content-center">
                     <div class="btn-group gap-3" role="group">
                         <button type="button" class="btn rent-buy-buttons" id="rent-button"
-                            onclick="selectOption('rent')">Alugar</button>
+                            onclick="selectOption('Aluguel')">Alugar</button>
                         <button type="button" class="btn rent-buy-buttons" id="buy-button"
-                            onclick="selectOption('buy')">Comprar</button>
+                            onclick="selectOption('Venda')">Comprar</button>
                     </div>
                 </div>
             </div>
 
-            <input type="hidden" name="rent-or-buy" id="action-input">
+            <input type="hidden" name="rent_or_buy" id="action-input">
 
             <div class="container-fluid mb-4">
                 <div class="row gap-3">
                     <div class="col">
-                        <label for="property-type" class="form-label">Tipo do imóvel</label>
-                        <select class="form-control" name="property-type" placeholder="">
+                        <label for="property_type" class="form-label">Tipo do imóvel</label>
+                        <select class="form-control" name="property_type" placeholder="">
                             <option>Apartamento</option>
                             <option>Casa</option>
                         </select>
@@ -46,8 +46,8 @@
             <div class="container-fluid mb-4">
                 <div class="row gap-3">
                     <div class="col">
-                        <label for="badrooms" class="form-label">Dormitórios</label>
-                        <select class="form-control" name="badrooms" placeholder="">
+                        <label for="bedrooms" class="form-label">Dormitórios</label>
+                        <select class="form-control" name="bedrooms" placeholder="">
                             <option>1</option>
                             <option>2</option>
                             <option>3+</option>
@@ -56,8 +56,8 @@
                     </div>
 
                     <div class="col">
-                        <label for="property-code" class="form-label">Código do imóvel</label>
-                        <input type="text" class="form-control" name="property-code" placeholder="">
+                        <label for="property_code" class="form-label">Código do imóvel</label>
+                        <input type="text" class="form-control" name="property_code" placeholder="">
                     </div>
 
                     <div class="col">
@@ -136,10 +136,10 @@
         const rentButton = document.getElementById('rent-button');
         const buyButton = document.getElementById('buy-button');
 
-        if (option === 'rent') {
+        if (option === 'Aluguel') {
             rentButton.classList.add('active');
             buyButton.classList.remove('active');
-        } else if (option === 'buy') {
+        } else if (option === 'Venda') {
             buyButton.classList.add('active');
             rentButton.classList.remove('active');
         }
