@@ -16,8 +16,11 @@ class Property extends Model
         'complement',
         'price',
         'rooms',
-        'city_id',
+        'bathrooms',
+        'size',
+        'garage',
 
+        'city_id',
         'property_type_id',
         'property_deal_id',
         'owner_id',

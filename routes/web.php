@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\BrokerController::class, 'homeScreen']);
 
 Route::post('/filter', [App\Http\Controllers\FilterController::class, 'index']);
-Route::get('/area-corretor', [App\Http\Controllers\BrokerController::class, 'brokerArea'])->middleware('auth');
+Route::get('/area-corretor', [App\Http\Controllers\BrokerController::class, 'brokerArea'])->middleware('auth')->name('broker-area');
 
 
 Route::get('/login-corretor', [App\Http\Controllers\AuthController::class, 'login'])->name('login'); //retorna a view de login

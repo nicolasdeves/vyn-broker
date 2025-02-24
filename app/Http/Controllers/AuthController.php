@@ -30,7 +30,7 @@ class AuthController extends Controller
         }
 
         Auth::login($user);
-        return view('broker.broker-area');
+        return redirect('/area-corretor');
     }
 
     public function logout()

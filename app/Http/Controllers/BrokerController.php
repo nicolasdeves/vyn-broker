@@ -58,18 +58,22 @@ class BrokerController extends Controller
         $cityId = $request->city_id;
         $propertyTypeId = $request->property_type_id;
         $propertyTypeId = $request->property_deal_id;
+        $bathrooms = $request->bathrooms;
+        $size = $request->size;
+        $garage = $request->garage;
         // $owner_id = $request->has('owner_id') ? $request->owner_id : Auth::id();
 
         $createProperty = new CreatePropertyUseCase();
-        $createProperty->execute($name, $street, $neighborhood, $number, $complement, $price, $rooms, $cityId, $propertyTypeId, $propertyTypeId, $imagePaths);
+        $createProperty->execute($name, $street, $neighborhood, $number, $complement, $price, $rooms, $cityId, $propertyTypeId, $propertyTypeId, $bathrooms, $size, $garage, $imagePaths);
 
-
+        $properties = Property::all();
         $propertyTypes = PropertyType::orderBy('type')->get();
         $propertyDeals = PropertyDeal::orderBy('deal')->get();
         $cities = City::orderBy('name')->get();
         $neighborhoods = Neighborhood::orderBy('name')->get();
+        $brokerArea = true;
 
-        return view('broker.broker-area', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods'));
+        return view('broker.broker-area', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods', 'properties', 'brokerArea'));
     }
 
     public function deleteProperty(Request $request)

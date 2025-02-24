@@ -16,19 +16,11 @@ class PropertyDealSeeder extends Seeder
     {
         DB::table('property_deal')->insert([
             [
-                'deal' => 'rent',
+                'deal' => 'Aluguel',
                 'created_at' => now()
             ],
             [
-                'deal' => 'sale',
-                'created_at' => now()
-            ],
-            [
-                'deal' => 'sold',
-                'created_at' => now()
-            ],
-            [
-                'deal' => 'rented',
+                'deal' => 'Venda',
                 'created_at' => now()
             ],
         ]);
