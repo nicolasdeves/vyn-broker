@@ -10,8 +10,8 @@ class Property extends Model
 
     protected $fillable = [
         'name',
+        'code',
         'street',
-        'neighborhood',
         'number',
         'complement',
         'price',
@@ -19,7 +19,9 @@ class Property extends Model
         'bathrooms',
         'size',
         'garage',
+        'furniture',
 
+        'neighborhood_id',
         'city_id',
         'property_type_id',
         'property_deal_id',

@@ -81,9 +81,9 @@
 
                         <div class="col-2">
                             <label class="form-label">Mobiliado?</label>
-                            <select class="form-select" id="furnished" name="furnished" required>
-                                <option value="yes">Sim</option>
-                                <option value="no">Não</option>
+                            <select class="form-select" id="furniture" name="furniture" required>
+                                <option value=true>Sim</option>
+                                <option value=false>Não</option>
                             </select>
                         </div>
                     </div>

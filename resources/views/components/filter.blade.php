@@ -21,23 +21,31 @@
                     <div class="col">
                         <label for="property_type" class="form-label">Tipo do imóvel</label>
                         <select class="form-control" name="property_type" placeholder="">
-                            <option>Apartamento</option>
-                            <option>Casa</option>
+                            <option value="">Selecione o tipo do imóvel</option>
+                            @foreach($propertyTypes as $propertyType)
+                                <option value="{{ $propertyType->id }}"> {{ $propertyType->type }} </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="city" class="form-label">Cidade</label>
                         <select class="form-control" name="city" placeholder="">
-                            <option>Lajeado</option>
-                            <option>Estrela</option>
+                        <option value="">Selecione uma cidade</option>
+                            @foreach ($cities as $city)
+                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="neighborhood" class="form-label">Bairro</label>
                         <select class="form-control" name="neighborhood" placeholder="">
-                            <option>Centro</option>
+                            <option value="">Selecione o bairro</option>
+                            @foreach ($neighborhoods as $neighborhood)
+                                <option value="{{ $neighborhood->id }}">{{ $neighborhood->name }}</option>
+                            @endforeach
+
                         </select>
                     </div>
                 </div>
@@ -48,6 +56,7 @@
                     <div class="col">
                         <label for="bedrooms" class="form-label">Dormitórios</label>
                         <select class="form-control" name="bedrooms" placeholder="">
+                            <option value="">Selecione a quantidade de dormitórios</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3+</option>
@@ -63,6 +72,7 @@
                     <div class="col">
                         <label for="furniture" class="form-label">Mobília</label>
                         <select class="form-control" name="furniture" placeholder="">
+                            <option value="">Selecione se o imóvel deve estar mobiliado</option>
                             <option>Não</option>
                             <option>Sim</option>
                         </select>

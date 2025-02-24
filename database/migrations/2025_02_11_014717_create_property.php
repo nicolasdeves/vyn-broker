@@ -16,8 +16,8 @@ class CreateProperty extends Migration
         Schema::create('property', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code')->unique();
             $table->string('street');
-            $table->string('neighborhood');
             $table->string('number');
             $table->string('complement');
             $table->decimal('price', 10, 2);
@@ -25,10 +25,17 @@ class CreateProperty extends Migration
             $table->integer('bathrooms');
             $table->integer('size');
             $table->integer('garage');
+            $table->boolean('furniture');
+
 
             $table
                 ->foreignId('city_id') // column
                 ->constrained('city') // table
+                ->onDelete('cascade');
+
+            $table
+                ->foreignId('neighborhood_id') // column
+                ->constrained('neighborhood') // table
                 ->onDelete('cascade');
 
             $table

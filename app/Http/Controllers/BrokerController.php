@@ -49,22 +49,25 @@ class BrokerController extends Controller
         }
 
         $name = $request->name;
+        $code = $request->property_code;
         $street = $request->street;
-        $neighborhood = $request->neighborhood_id;
         $number = $request->number;
         $complement = $request->complement;
         $price = $request->price;
         $rooms = $request->rooms;
         $cityId = $request->city_id;
+        $neighborhoodId = $request->neighborhood_id;
         $propertyTypeId = $request->property_type_id;
         $propertyTypeId = $request->property_deal_id;
         $bathrooms = $request->bathrooms;
         $size = $request->size;
         $garage = $request->garage;
+        $furniture = (bool) $request->furniture;
+
         // $owner_id = $request->has('owner_id') ? $request->owner_id : Auth::id();
 
         $createProperty = new CreatePropertyUseCase();
-        $createProperty->execute($name, $street, $neighborhood, $number, $complement, $price, $rooms, $cityId, $propertyTypeId, $propertyTypeId, $bathrooms, $size, $garage, $imagePaths);
+        $createProperty->execute($name, $code, $street, $neighborhoodId, $number, $complement, $price, $rooms, $cityId, $propertyTypeId, $propertyTypeId, $bathrooms, $size, $garage, $furniture, $imagePaths);
 
         $properties = Property::all();
         $propertyTypes = PropertyType::orderBy('type')->get();
