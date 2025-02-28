@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\BrokerController::class, 'homeScreen']);
 
-Route::post('/filter', [App\Http\Controllers\FilterController::class, 'index']);
+Route::post('/imoveis', [App\Http\Controllers\FilterController::class, 'index']);
+Route::get('/detalhes/{propertyId}', [App\Http\Controllers\BrokerController::class, 'propertyDetails'])->middleware('auth');
 Route::get('/area-corretor', [App\Http\Controllers\BrokerController::class, 'brokerArea'])->middleware('auth')->name('broker-area');
+Route::get('/comprar', [App\Http\Controllers\BrokerController::class, 'buyProperties'])->middleware('auth')->name('broker-area');
+Route::get('/alugar', [App\Http\Controllers\BrokerController::class, 'rentProperties'])->middleware('auth')->name('broker-area');
 
 
 Route::get('/login-corretor', [App\Http\Controllers\AuthController::class, 'login'])->name('login'); //retorna a view de login
