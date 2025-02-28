@@ -1,6 +1,6 @@
 <body>
 
-    <div class="container d-flex flex-row justify-content-between mt-5">
+    <div class="container d-flex flex-row justify-content-between mt-5 mb-5">
         @foreach ($properties as $property)
             <div class="property-card ">
 
@@ -19,7 +19,7 @@
                 <div class="card-content">
                     <div class="price">R${{ number_format($property->price, 2, ',', '.') }}</div>
 
-                    <h3 class="title">{{ $property->name }}</h3>
+                    <h3 class="title">{{ $property->name . ' (' . $property->code . ')'}}</h3>
 
                     <div class="location">
                         <i class="fas fa-map-marker-alt icon"></i>
@@ -56,13 +56,9 @@
                     <div class="feature">
                         <i class="fas fa-car icon"></i>
                         {{ $property->garage }}
-                        @if ($property->garage > 1)
-                        Vagas
-                        @else
-                        Vaga
-                        @endif
+
                     </div>
-                    <button class=" btn-information btn-details ">Ver Detalhes</button>
+                    <a class="btn-information btn-details" href={{ url('/detalhes/' . $property->id) }}>Ver Detalhes</a>
                 </div>
             </div>
         @endforeach
@@ -74,7 +70,7 @@
 
 <style>
     .property-card {
-        max-width: 20rem;
+        max-width: 40rem;
         background: white;
         border-radius: 0.5rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);

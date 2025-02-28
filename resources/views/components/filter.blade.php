@@ -1,4 +1,4 @@
-<form action="/filter" method="POST">
+<form action="/imoveis" method="POST">
     @csrf
     <div class="form d-flex justify-content-center align-items-center w-100 p-5">
         <div class="d-flex flex-column filter w-100">
@@ -22,7 +22,7 @@
                         <label for="property_type" class="form-label">Tipo do imóvel</label>
                         <select class="form-control" name="property_type" placeholder="">
                             <option value="">Selecione o tipo do imóvel</option>
-                            @foreach($propertyTypes as $propertyType)
+                            @foreach ($propertyTypes as $propertyType)
                                 <option value="{{ $propertyType->id }}"> {{ $propertyType->type }} </option>
                             @endforeach
                         </select>
@@ -31,7 +31,7 @@
                     <div class="col">
                         <label for="city" class="form-label">Cidade</label>
                         <select class="form-control" name="city" placeholder="">
-                        <option value="">Selecione uma cidade</option>
+                            <option value="">Selecione uma cidade</option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                             @endforeach
@@ -45,7 +45,6 @@
                             @foreach ($neighborhoods as $neighborhood)
                                 <option value="{{ $neighborhood->id }}">{{ $neighborhood->name }}</option>
                             @endforeach
-
                         </select>
                     </div>
                 </div>
@@ -73,8 +72,8 @@
                         <label for="furniture" class="form-label">Mobília</label>
                         <select class="form-control" name="furniture" placeholder="">
                             <option value="">Selecione se o imóvel deve estar mobiliado</option>
-                            <option>Não</option>
-                            <option>Sim</option>
+                            <option value='n' >Não</option>
+                            <option value='y'>Sim</option>
                         </select>
                     </div>
                 </div>
@@ -136,7 +135,6 @@
     .active {
         opacity: 0.8;
     }
-
 </style>
 
 <script>
