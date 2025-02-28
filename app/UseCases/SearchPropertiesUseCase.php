@@ -9,7 +9,7 @@ use App\Models\PropertyType;
 
 class SearchPropertiesUseCase {
 
-    public function execute($rentOrbuy, $propertyTypeId, $cityId, $neighborhoodId, $propertyCode, $furniture) {
+    public function execute($rentOrbuy, $propertyTypeId, $cityId, $neighborhoodId, $propertyCode, $furniture, $bedrooms) {
 
         $properties = Property::all();
 
@@ -36,13 +36,18 @@ class SearchPropertiesUseCase {
             $properties = $properties->where('neighborhood_id', $neighborhoodId);
         }
 
-        if ($furniture) {
-            $properties = $properties->where('furniture', $furniture); //isso aqui nao ta funcionando
+        if ($bedrooms) {
+            if ($bedrooms <= 2) {
+                $properties = $properties->where('rooms', '=', $bedrooms);
+            } else {
+                $properties = $properties->where('rooms', '>=', $bedrooms);
+            }
         }
 
-
-
-
+        if ($furniture) {
+            $f = $furniture == 'y' ? 1 : 0;
+            $properties = $properties->where('furniture', $f);
+        }
 
         return $properties;
     }

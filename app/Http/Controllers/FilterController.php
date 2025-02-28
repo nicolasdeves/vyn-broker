@@ -20,21 +20,19 @@ class FilterController extends Controller
         $rentOrBuy = $request->rent_or_buy;
         $propertyType = $request->property_type;
         $city = $request->city;
-        $neighborhood = $request->neighborhood;
+        $neighborhoodId = $request->neighborhood;
         $propertyCode = $request->property_code;
         $bedrooms = $request->bedrooms;
         $furniture = $request->furniture;
 
         $searchPropertiesUseCase = new SearchPropertiesUseCase();
 
-        $properties = $searchPropertiesUseCase->execute($rentOrBuy, $propertyType, $city, $neighborhood, $propertyCode, $furniture);
-
+        $properties = $searchPropertiesUseCase->execute($rentOrBuy, $propertyType, $city, $neighborhoodId, $propertyCode, $furniture, $bedrooms);
 
         $brokerArea = false;
         $cities = City::all();
         $propertyTypes = PropertyType::all();
         $neighborhoods = Neighborhood::all();
-
 
         return view('broker.index', compact('properties', 'brokerArea', 'cities', 'propertyTypes', 'neighborhoods'));
     }

@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class BrokerController extends Controller
 {
     public function homeScreen() {
-        $properties = Property::all();
+        $properties = Property::orderBy('price')->get();
         $propertyTypes = PropertyType::orderBy('type')->get();
         $propertyDeals = PropertyDeal::orderBy('deal')->get();
         $cities = City::orderBy('name')->get();
@@ -26,7 +26,7 @@ class BrokerController extends Controller
 
     public function brokerArea()
     {
-        $properties = Property::all();
+        $properties = Property::orderBy('price')->get();
         $propertyTypes = PropertyType::orderBy('type')->get();
         $propertyDeals = PropertyDeal::orderBy('deal')->get();
         $cities = City::orderBy('name')->get();
@@ -69,7 +69,7 @@ class BrokerController extends Controller
         $createProperty = new CreatePropertyUseCase();
         $createProperty->execute($name, $code, $street, $neighborhoodId, $number, $complement, $price, $rooms, $cityId, $propertyTypeId, $propertyTypeId, $bathrooms, $size, $garage, $furniture, $imagePaths);
 
-        $properties = Property::all();
+        $properties = Property::orderBy('price')->get();
         $propertyTypes = PropertyType::orderBy('type')->get();
         $propertyDeals = PropertyDeal::orderBy('deal')->get();
         $cities = City::orderBy('name')->get();
@@ -84,5 +84,34 @@ class BrokerController extends Controller
         $deleteProperty = new DeletePropertyUseCase();
         $deleteProperty->execute($request->id);
 
+    }
+
+    public function propertyDetails($propertyId)
+    {
+        $property = Property::find($propertyId);
+
+        return view('broker.property-details', compact('property'));
+    }
+
+    public function rentProperties() {
+        $properties = Property::where('property_deal_id', 1)->orderBy('price')->get();
+        $propertyTypes = PropertyType::orderBy('type')->get();
+        $propertyDeals = PropertyDeal::orderBy('deal')->get();
+        $cities = City::orderBy('name')->get();
+        $neighborhoods = Neighborhood::orderBy('name')->get();
+        $brokerArea = false;
+
+        return view('broker.index', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods', 'properties', 'brokerArea'));
+    }
+
+    public function buyProperties() {
+        $properties = Property::where('property_deal_id', 2)->orderBy('price')->get();
+        $propertyTypes = PropertyType::orderBy('type')->get();
+        $propertyDeals = PropertyDeal::orderBy('deal')->get();
+        $cities = City::orderBy('name')->get();
+        $neighborhoods = Neighborhood::orderBy('name')->get();
+        $brokerArea = false;
+
+        return view('broker.index', compact('propertyTypes', 'propertyDeals', 'cities', 'neighborhoods', 'properties', 'brokerArea'));
     }
 }
